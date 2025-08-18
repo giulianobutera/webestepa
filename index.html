@@ -283,35 +283,66 @@
                 <div class="w-100">
                     <img src="assets/image 35.png" alt="Contacto" class="img-fluid w-100" style="max-height: 445px; object-fit: cover;">
                     <!-- Texto y formulario -->
-                     <div class="container py-5">
+                    <div class="container py-5">
                         <p class="text-center mb-5">
                             Para cualquier consulta, te dejamos un espacio aquí abajo para que nos dejes tu mensaje, 
                             y nos pondremos en contacto pronto. Si estás interesado en trabajar con nosotros, también puedes adjuntar tu CV.
                         </p>
                         
-                        <form>
+                        <form id="contactForm" enctype="multipart/form-data">
                             <div class="row col-12">
                                 <div class="form-group col-md-6 mb-3">
-                                    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
                                 </div>
                                 <div class="form-group col-md-6 mb-3">
-                                    <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                                    <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" required>
                                 </div>
                                 <div class="form-group mb-3">
-                                <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com" required>
                                 </div>
                                 <div class="form-group mb-3">
-                                <textarea class="form-control" id="mensaje" rows="4" placeholder="Escribí tu mensaje..."></textarea>
+                                    <textarea class="form-control" id="mensaje" name="mensaje" rows="4" placeholder="Escribí tu mensaje..." required></textarea>
+                                </div>
+
+                                <!-- Botón para adjuntar CV -->
+                                <div class="form-group mb-3">
+                                    <!-- Input oculto -->
+                                    <input type="file" id="cv" name="cv" accept=".pdf,.jpg,.jpeg,.png" style="display:none;">
+                                    
+                                    <!-- Botón visible -->
+                                    <button type="button" class="btn btn-secondary" id="btnAdjuntar">
+                                        Adjuntar CV
+                                    </button>
+                                    
+                                    <!-- Texto para mostrar nombre -->
+                                    <span id="fileName" class="ms-2 text-muted" style="font-size:0.9rem;">
+                                        Ningún archivo seleccionado
+                                    </span>
+                                    
+                                    <small class="form-text text-muted d-block">
+                                        Formatos permitidos: PDF, JPG, PNG (máx. 4MB)
+                                    </small>
                                 </div>
                             </div>
+
+                            <!-- reCAPTCHA (comentado) -->
+                            <!--
+                            <div class="mb-3">
+                                <div class="g-recaptcha" data-sitekey="TU_SITE_KEY_AQUI"></div>
+                            </div>
+                            -->
+
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <button class="btn btn-secondary" type="button" class="form-control-file" id="cv">Adjuntar CV</button>
-                                <button class="btn btn-primary me-md-2" type="button">Enviar</button>
+                                <button class="btn btn-primary me-md-2" type="submit">Enviar</button>
                             </div>
                         </form>
-                     </div>
+                    </div>
                 </div>           
             </section>
+
+            <!-- Scripts -->
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+            <script src="contact.js"></script>
         </main>
 
         <!-- Footer -->
