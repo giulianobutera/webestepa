@@ -73,15 +73,15 @@ try {
     $mail->Port = $smtpPort;
 
     // Remitente y destinatario
-    $mail->setFrom($smtpUser, 'Sitio web - sección contacto');
+    $mail->setFrom($email, $nombre . ' ' . $apellido);
     $mail->addAddress('contacto@estepaconsultores.ar', 'Estepa Consultores');
 
     // Contenido del mail
     $mail->isHTML(true);
-    $mail->Subject = 'Nuevo mensaje desde el sitio web (estepaconsultores.ar)';
+    $mail->Subject = 'Nuevo mensaje de contacto desde el sitio web';
     $mail->Body = "
         <h2>De: $nombre $apellido</h2>
-        <h3>Email: $email</h3>
+        <h3>Email de contacto: $email</h3>
         <p>$mensaje</p>
     ";
 
