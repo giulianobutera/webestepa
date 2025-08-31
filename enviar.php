@@ -74,16 +74,15 @@ try {
 
     // Remitente y destinatario
     $mail->setFrom($smtpUser, 'Formulario Web');
-    $mail->addAddress('contacto@estepaconsultores.ar', 'Estepa Consultores'); // Podés cambiar destinatario
+    $mail->addAddress('contacto@estepaconsultores.ar', 'Estepa Consultores');
 
     // Contenido del mail
     $mail->isHTML(true);
-    $mail->Subject = 'Nuevo mensaje desde la landing';
+    $mail->Subject = 'Nuevo mensaje desde el sitio web (estepaconsultores.ar)';
     $mail->Body = "
-        <h2>Nuevo mensaje de contacto</h2>
-        <p><strong>Nombre:</strong> $nombre $apellido</p>
-        <p><strong>Email:</strong> $email</p>
-        <p><strong>Mensaje:</strong><br>$mensaje</p>
+        <h2>De: $nombre $apellido</h2>
+        <h3>Email: $email</h3>
+        <p>$mensaje</p>
     ";
 
     // Adjuntar archivo si existe

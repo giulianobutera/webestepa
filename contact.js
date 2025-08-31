@@ -3,8 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnAdjuntar = document.getElementById("btnAdjuntar");
     const inputFile = document.getElementById("cv");
     const fileNameSpan = document.getElementById("fileName");
+    const btnEnviar = document.getElementById("btnEnviar");
+    const spinner = document.getElementById("spinner");
+    const btnText = document.getElementById("btnText");
 
-    // Abrir selector al clickear botón
+    // Abrir selector al clickear el botón "Adjuntar CV"
     btnAdjuntar.addEventListener("click", () => {
         inputFile.click();
     });
@@ -18,9 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Validación y envío
+    // Manejar envío del formulario
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
+
+        // Mostrar spinner, cambiar texto y deshabilitar botón
+        spinner.style.display = "inline-block";
+        btnText.textContent = "Enviando...";
+        btnEnviar.disabled = true;
 
         const file = inputFile.files[0];
 
@@ -31,19 +39,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!allowedTypes.includes(file.type)) {
                 alert("Formato no permitido. Solo PDF, JPG o PNG.");
+                resetButtonState();
                 return;
             }
             if (file.size > maxSize) {
                 alert("El archivo supera los 2MB.");
+                resetButtonState();
                 return;
             }
         }
 
-        // reCAPTCHA (comentado)
+        // (Descomentar cuando se active reCAPTCHA)
         /*
         const recaptchaResponse = grecaptcha.getResponse();
         if (!recaptchaResponse) {
             alert("Por favor, completa el reCAPTCHA.");
+            resetButtonState();
             return;
         }
         */
@@ -70,6 +81,15 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
             console.error(error);
             alert("Hubo un error al enviar el formulario.");
+        } finally {
+            resetButtonState();
         }
     });
+
+    // Función para restaurar el estado del botón
+    function resetButtonState() {
+        spinner.style.display = "none";
+        btnText.textContent = "Enviar";
+        btnEnviar.disabled = false;
+    }
 });

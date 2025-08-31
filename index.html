@@ -263,7 +263,7 @@
                 <div class="container">
                     <h2 class="fw-bold text-primary display-5 font-family-Lexend mb-5">Novedades</h2>
                     <div class="row gy-4"> 
-                        <div class="carrusel">
+                        <div class="carrusel" style="overflow-y: hidden;">
                             <div class="img-novedades"><img src="assets/Novedades/img-novedades.png" alt=""></div>
                             <div class="img-novedades"><img src="assets/Novedades/img-novedades 2.png" alt=""></div>
                             <div class="img-novedades"><img src="assets/Novedades/img-novedades 3.png" alt=""></div>
@@ -320,7 +320,7 @@
                                     </span>
                                     
                                     <small class="form-text text-muted d-block">
-                                        Formatos permitidos: PDF, JPG, PNG (máx. 4MB)
+                                        Formatos permitidos: PDF, JPG, PNG (máx. 2MB)
                                     </small>
                                 </div>
                             </div>
@@ -333,7 +333,12 @@
                             -->
 
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <button class="btn btn-primary me-md-2" type="submit">Enviar</button>
+                                <button class="btn btn-primary me-md-2 d-flex align-items-center justify-content-center" type="submit" id="btnEnviar" style="min-width: 120px;">
+                                    <span id="btnText">Enviar</span>
+                                    <div id="spinner" class="spinner-border spinner-border-sm ms-2" role="status" style="display:none;">
+                                        <span class="visually-hidden">Enviando...</span>
+                                    </div>
+                                </button>
                             </div>
                         </form>
                     </div>
