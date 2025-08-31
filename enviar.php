@@ -73,7 +73,7 @@ try {
     $mail->Port = $smtpPort;
 
     // Remitente y destinatario
-    $mail->setFrom($smtpUser, 'Formulario Web');
+    $mail->setFrom($smtpUser, 'Sitio web - sección contacto');
     $mail->addAddress('contacto@estepaconsultores.ar', 'Estepa Consultores');
 
     // Contenido del mail
