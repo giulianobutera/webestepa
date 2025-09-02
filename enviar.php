@@ -18,10 +18,9 @@ if (!$nombre || !$apellido || !$email || !$mensaje) {
     exit;
 }
 
-// (Descomentar cuando uses reCAPTCHA)
-/*
+// Validar reCAPTCHA
 $recaptchaResponse = $_POST['g-recaptcha-response'];
-$secretKey = "TU_SECRET_KEY_AQUI";
+$secretKey = "6LeeT7srAAAAADPatPfQZyQh-BtKbM_k6aA2o9D8";
 
 $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secretKey}&response={$recaptchaResponse}");
 $responseData = json_decode($verify);
@@ -30,7 +29,6 @@ if (!$responseData->success) {
     echo json_encode(["success" => false, "error" => "Error en reCAPTCHA"]);
     exit;
 }
-*/
 
 // Validar archivo adjunto si existe
 $archivoAdjunto = null;

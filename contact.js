@@ -49,15 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // (Descomentar cuando se active reCAPTCHA)
-        /*
+        // Validación del reCAPTCHA
         const recaptchaResponse = grecaptcha.getResponse();
         if (!recaptchaResponse) {
             alert("Por favor, completa el reCAPTCHA.");
             resetButtonState();
             return;
         }
-        */
 
         // Preparar datos
         const formData = new FormData(form);
@@ -74,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Mensaje enviado correctamente.");
                 form.reset();
                 fileNameSpan.textContent = "Ningún archivo seleccionado";
-                // grecaptcha.reset(); // descomentar cuando se use reCAPTCHA
+                grecaptcha.reset();
             } else {
                 alert("Error: " + result.error);
             }
